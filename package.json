@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.0.0-beta.48",
+    "@material-ui/core": "^4.9.14",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -10,10 +12,14 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "graphql": "^15.0.0",
+    "graphql.macro": "^1.4.2",
+    "lodash": "^4.17.15",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "typescript": "~3.7.2"
+    "react-tsparticles": "^1.14.3",
+    "typescript": "~3.9.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,5 +45,8 @@
   "main": "src/index.tsx",
   "repository": "https://github.com/theryanclausen/clues-for-booze-ui.git",
   "author": "theryanclausen <theryanclausen@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/lodash": "^4.14.151"
+  }
 }
