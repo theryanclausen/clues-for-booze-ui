@@ -7,25 +7,34 @@ import {
     FormControl,
     InputLabel,
     MenuItem,
-    LinearProgress
+    LinearProgress,
+    Button,
+    CardActions,
+    makeStyles
  } from '@material-ui/core'
  import { useQuery } from '@apollo/client'
  import { loader } from 'graphql.macro'
  const query = loader('../data/schema/queryCategories.graphql')
 
-const CategorySelector = ({ setCategory, category }) => {
-    const { data:{categories=[]}={}, loading } = useQuery(query)
+const useStyles = makeStyles({
+    cardRoot:{
+        minWidth:"350px"
+    }
+})
 
+const CategorySelector = ({ setCategory, category, setShowCategories }) => {
+    const { data:{categories=[]}={}, loading } = useQuery(query)
+    const classes = useStyles()
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setCategory(event.target.value as string);
       };
     return(
-    <Card>
+    <Card className={classes.cardRoot}>
         <CardHeader
             title="Select Your Category"
         />
         <CardContent>
-            {loading && <LinearProgress />}
+            
             <FormControl fullWidth>
                 <InputLabel id="category-select-label">Category</InputLabel>
                 <Select
@@ -33,7 +42,6 @@ const CategorySelector = ({ setCategory, category }) => {
                     id="category-select"
                     autoWidth={true}
                     fullWidth={true}
-                    variant='outlined'
                     value={category}
                     onChange={handleChange}
                 >
@@ -42,8 +50,15 @@ const CategorySelector = ({ setCategory, category }) => {
                     ))}
 
                 </Select>
+                {loading && <LinearProgress />}
             </FormControl>
-
+            <CardActions>
+               <Button 
+                disabled={!Boolean(category)} 
+                onClick={()=>setShowCategories(false)}>
+                    Start The Quiz
+                </Button>
+            </CardActions>
         </CardContent>
     </Card>
 )}

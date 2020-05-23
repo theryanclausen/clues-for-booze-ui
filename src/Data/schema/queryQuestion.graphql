@@ -1,0 +1,10 @@
+query queryQuestion($category:Int){
+    question(category:$category){
+        responseCode
+        question{
+            question
+            correctAnswer
+            incorrectAnswers
+        }
+    }
+}
