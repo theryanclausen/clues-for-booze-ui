@@ -1,24 +1,31 @@
 import React from 'react';
-import { Card, CardHeader } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core"
 import Background from './Background';
+import Content from './Content';
+
+const useStyles = makeStyles({ 
+  content:{
+    position:"absolute", 
+    height:"100vh", 
+    width:"100vw", 
+    display:'flex', 
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  wrapper:{
+    position:'relative'
+  }
+  
+})
+
+
 
 function App() {
+  const classes = useStyles()
   return (
-    <div style={{position:"relative"}}>
-      <div style={{ 
-        position:"absolute", 
-        height:"100vh", 
-        width:"100vw", 
-        display:'flex', 
-        justifyContent:'center',
-        alignItems:'center'
-        }}>
-      <Card>
-        <CardHeader title="I'm a dumb old title or whatever">
-          
-        </CardHeader>
-        heres something
-      </Card>
+    <div className={classes.wrapper}>
+      <div className={classes.content}>
+      <Content />
       </div>
       <Background/>
     </div>
