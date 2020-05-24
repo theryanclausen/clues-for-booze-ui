@@ -5,6 +5,7 @@ query queryQuestion($category:Int){
             question
             correctAnswer
             incorrectAnswers
+            questionType
         }
     }
 }
