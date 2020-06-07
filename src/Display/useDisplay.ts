@@ -1,11 +1,8 @@
 import { useState } from 'react';
-export const displayConstants ={
-    SPL:'SPL',
-    CAT:'CAT',
-    QUES:'QUES'
-}
+
 export default () => {
     const [showSplash, setShowSplash] = useState(true)
+    const [showAbout, setShowAbout] = useState(false)
     const [showCategories, setShowCategories] = useState(false)
     const [showQuestions, setShowQuestions] = useState(false)
 
@@ -13,6 +10,7 @@ export default () => {
         showSplash && setShowSplash(false)
         showCategories && setShowCategories(false)
         showQuestions && setShowQuestions(false)
+        showAbout && setShowAbout(false)
     }
 
     const methods = {
@@ -24,9 +22,13 @@ export default () => {
             off()
             setTimeout(()=>setShowQuestions(true),300)
         },
+        abtOn: ()=>{
+            off()
+            setTimeout(()=>setShowAbout(true),300)
+        },
         quesOff:()=>{
             off()
         }
     }
-    return {showQuestions, showCategories, showSplash, methods};
+    return {showQuestions, showCategories, showSplash, showAbout, methods};
 }
