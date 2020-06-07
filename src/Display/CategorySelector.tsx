@@ -9,7 +9,6 @@ import {
     MenuItem,
     LinearProgress,
     Button,
-    CardActions,
     makeStyles
  } from '@material-ui/core'
  import { useQuery } from '@apollo/client'
@@ -22,7 +21,7 @@ const useStyles = makeStyles({
     }
 })
 
-const CategorySelector = ({ setCategory, category, setShowCategories }) => {
+const CategorySelector = ({ setCategory, category, methods }) => {
     const { data:{categories=[]}={}, loading } = useQuery(query)
     const classes = useStyles()
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
@@ -52,13 +51,13 @@ const CategorySelector = ({ setCategory, category, setShowCategories }) => {
                 </Select>
                 {loading && <LinearProgress />}
             </FormControl>
-            <CardActions>
-               <Button 
+               <Button
+                style={{marginTop:"5px"}}
+                fullWidth={true}
                 disabled={!Boolean(category)} 
-                onClick={()=>setShowCategories(false)}>
+                onClick={methods.quesOn}>
                     Start The Quiz
                 </Button>
-            </CardActions>
         </CardContent>
     </Card>
 )}

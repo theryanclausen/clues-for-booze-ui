@@ -2,18 +2,31 @@ import React, { useState } from 'react'
 import { Slide } from '@material-ui/core'
 import CategorySelector from './CategorySelector'
 import useStreak from './useStreak'
+import useDisplay from './useDisplay'
+import Splash from './Splash'
 import StatsWindow from './StatsWindow'
 import Question from './Question'
 
 const Content = () => {
-    const [showCategories, setShowCategories] = useState(true)
-    const [category, setCategory] =useState('')
+    const {methods, showCategories, showQuestions, showSplash} = useDisplay()
     const { streak, isWinning, answerQuestion } = useStreak()
+    const [category, setCategory] =useState('')
+    
     return <>
     <StatsWindow
         streak={streak}
         isWinning={isWinning}
     />
+    <Slide
+        direction='right' 
+        in={showSplash} 
+        mountOnEnter 
+        unmountOnExit
+        ><div>
+        <Splash 
+            methods={methods} 
+        /></div>
+    </Slide>
     <Slide
         direction='up' 
         in={showCategories} 
@@ -23,18 +36,19 @@ const Content = () => {
         <CategorySelector 
             category={category}
             setCategory={setCategory}
-            setShowCategories={setShowCategories} 
+            methods={methods} 
         /></div>
     </Slide>
     <Slide
         direction='down' 
-        in={!showCategories} 
+        in={showQuestions} 
         mountOnEnter 
         unmountOnExit
         ><div>
         <Question 
             category={category}
             answerQuestion={answerQuestion} 
+            methods={methods}
         /></div>
     </Slide>
     </>

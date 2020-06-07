@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardHeader, CardContent, makeStyles } from '@material-ui/core'
+import { Card, CardHeader, CardContent, makeStyles, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles({
     card:{
@@ -15,7 +15,10 @@ export default ({ isWinning, streak }) => {
         <Card className={classes.card}>
             <CardHeader title='Current Streak' />
             <CardContent>
+                <Typography>
+
                 {streak} {isWinning ? 'correct':'incorrect'} answers in a row!
+                </Typography>
             </CardContent>
         </Card>
     )
