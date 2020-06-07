@@ -9,7 +9,7 @@ import {
  } from '@material-ui/core'
  import { useQuery } from '@apollo/client'
  import { loader } from 'graphql.macro'
- const query = loader('../data/schema/queryQuestion.graphql')
+ const query = loader('../Data/schema/queryQuestion.graphql')
 
 const useStyles = makeStyles({
     cardRoot:{
