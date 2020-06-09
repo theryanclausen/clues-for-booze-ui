@@ -1,0 +1,9 @@
+query getDrink{
+    drink{
+        id
+        name
+        instructions
+        ingredients
+        thumbnail
+    }
+}
